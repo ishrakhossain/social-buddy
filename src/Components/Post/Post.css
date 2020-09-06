@@ -1,0 +1,14 @@
+.button{
+    padding: 10px;
+    background-color: darkBlue;
+    color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display:center;
+}
+.button:hover{
+    background-color: rgb(60, 0, 128);
+}
+.whole-card{
+    background-color: #3390FF;
+}
