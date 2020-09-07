@@ -2,28 +2,44 @@ import React from 'react';
 
 import './App.css';
 import Header from './Components/Header/Header';
-import Post from './Components/Post/Post';
-import { useState, useEffect } from 'react';
 
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Home from './Components/Home/Home';
+import NoMatch from './Components/NoMatch/NoMatch';
+import Post from './Components/Post/Post';
+import PostDetail from './Components/Post/PostDetail/PostDetail';
+import Comments from './Components/Comments/Comments';
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(res => res.json())
-        .then(data => setUsers(data))
-
-    }, [])
+  
+    
   
   return (
+    
     <div>
       
-        <Header></Header>
-        {
-          users.map(user => <Post user = {user}></Post>)
-        }
-        
+      
+      <Router>
+       <Switch>
+         <Route exact path = '/'>
+         <Home></Home>
+         </Route>
+         <Route path = '/post/:postId'>
+           <PostDetail></PostDetail>
+         </Route>
+         
+         <Route path = "*">
+           <NoMatch></NoMatch>
+         </Route>
+       </Switch>
+     </Router>
     </div>
   );
 }
